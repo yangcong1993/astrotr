@@ -1,18 +1,10 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import "../styles/global.css";
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "博客";
 import '@fontsource/lxgw-wenkai-tc';
 ---
-<!DOCTYPE html>
-<html lang="zh-cn">
-    <head>
-        <meta charset="utf-8">
-        <title>wode BLog </title>
-    <body>
+<BaseLayout pageTitle={pageTitle}>
+    <h1>wode BLog </h1>
+    <p>这是我的博客</p>
 
-        <Header />
-        <h1>wode BLog </h1>
-        <Footer />
-    </body>
-</html>
+</BaseLayout>
