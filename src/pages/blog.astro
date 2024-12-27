@@ -2,9 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "博客";
 import '@fontsource/lxgw-wenkai-tc';
+import Blogpost from '../components/Blogpost.astro';
+const allPosts = await Astro.glob('./posts/*.md');
 ---
 <BaseLayout pageTitle={pageTitle}>
     <h1>wode BLog </h1>
     <p>这是我的博客</p>
+    {allPosts.map((post) => <Blogpost url={post.url} title={post.frontmatter.title} />)}
 
 </BaseLayout>

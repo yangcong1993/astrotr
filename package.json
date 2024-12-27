@@ -9,8 +9,11 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/preact": "^4.0.1",
+    "@astrojs/rss": "^4.0.10",
     "@fontsource/long-cang": "^5.1.0",
     "@fontsource/lxgw-wenkai-tc": "^5.1.0",
-    "astro": "^5.1.1"
+    "astro": "^5.1.1",
+    "preact": "^10.25.3"
   }
 }
