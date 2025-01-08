@@ -1,10 +1,109 @@
 ---
-
+import Hamburger from './Hamburger.astro';
+import ThemeIcon from './ThemeIcon.astro';
 ---
 
-<div class="nav-links">
-    <a href="/">首页</a>
-    <a href="/about/">关于</a>
-    <a href="/blog/">博客</a>
-    <a href="/tags/">标签</a>
+<div class="nav-container">
+    <Hamburger />
+    <div class="nav-links">
+        <div class="nav-items">
+            <a href="/">首页</a>
+            <a href="/about">关于</a>
+            <a href="/blog">博客</a>
+            <a href="/tags">标签</a>
+        </div>
+        <div class="theme-container">
+            <ThemeIcon />
+        </div>
+    </div>
 </div>
+
+<style>
+    .nav-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-items {
+        display: flex;
+        align-items: center;
+    }
+    
+    .nav-items a {
+        color: #000000;
+        text-decoration: none;
+        padding: 10px 20px;
+        transition: color 0.2s ease;
+    }
+
+    .nav-items a:hover {
+        color: #000000;
+    }
+    
+    .theme-container {
+        display: flex;
+        align-items: center;
+        z-index: 1;
+        margin-left: 2rem;
+    }
+
+    /* 暗色模式样式 */
+    :global(.dark) .nav-items a {
+        color: #ffffff;
+    }
+
+    :global(.dark) .nav-items a:hover {
+        color: #ffffff;
+    }
+
+    /* 移动端样式 */
+    @media screen and (max-width: 636px) {
+        .nav-links {
+            display: none;
+        }
+        
+        .nav-links.expanded {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        :global(.dark) .nav-links.expanded {
+            background-color: #1f2937;
+        }
+
+        .theme-container {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            margin-left: 0;
+        }
+    }
+
+    /* 桌面端样式 */
+    @media screen and (min-width: 636px) {
+        .nav-links {
+            margin-left: 5em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: static;
+            width: auto;
+            background: none;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        document.querySelector('.hamburger')?.addEventListener('click', () => {
+            document.querySelector('.nav-links')?.classList.toggle('expanded');
+        });
+    });
+</script>

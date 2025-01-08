@@ -1,20 +1,56 @@
 ---
 import Social from './Social.astro';
+
+const today = new Date();
 ---
 
 <footer>
-    <p>  
-    <Social platform="twitter" username="astrodotbuild" />
-    <Social platform="github" username="withastro" />
-    <Social platform="youtube" username="astrodotbuild" />
-    <Social platform="bilibili" username="2584848" />
-    </p>
+    <div class="social-links">
+        <Social platform="twitter" username="astrodotbuild" />
+        <Social platform="github" username="withastro" />
+        <Social platform="youtube" username="astrodotbuild" />
+        <Social platform="bilibili" username="2584848" />
+    </div>
+    <div class="divider"></div>
+    <div class="copyright">
+        &copy; {today.getFullYear()} Your Name. All rights reserved.
+    </div>
 </footer>
 
 <style>
     footer {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        padding: 2rem 0;
+        text-align: center;
     }
-  </style>
+
+    .social-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .divider {
+        width: 100%;
+        height: 1px;
+        background-color: #ddd;
+        margin: 1rem 0;
+    }
+
+    .copyright {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    /* 暗色模式样式 */
+    :global(.dark) .copyright {
+        color: #d2c8c8;
+    }
+
+    :global(.dark) .divider {
+        background-color: #d2c8c8;  /* 暗色模式下的分割线颜色 */
+    }
+</style>
